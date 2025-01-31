@@ -1,6 +1,14 @@
 .App {
   font-family: "Poppins", "Lato", "Montserrat", sans-serif;
-  background-color: #1b1f3b;
+  background: linear-gradient(
+    -45deg,
+    #1e90ff,
+    #0a3d62,
+    #4682b4,
+    #5f9ea0
+  ); /* Blue tones */
+  background-size: 400% 400%;
+  animation: gradientAnimation 12s ease infinite;
   width: 100vw;
   height: 100vh;
   color: #eaeaea;
@@ -19,10 +27,12 @@
 .Header h1 {
   font-family: "Playfair Display", "Press Start 2P", "Cinzel", serif;
   font-size: clamp(1.5rem, 5vw, 2.5rem);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .Header p {
   font-size: clamp(0.8rem, 2vw, 1.2rem);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .ScoreBoard {
@@ -35,5 +45,17 @@
   }
   .Header .Details {
     padding-left: 1rem;
+  }
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
