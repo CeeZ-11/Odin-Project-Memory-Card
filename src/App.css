@@ -1,22 +1,20 @@
-.App {
+body {
   font-family: "Poppins", "Lato", "Montserrat", sans-serif;
-  background: linear-gradient(
-    -45deg,
-    #1e90ff,
-    #0a3d62,
-    #4682b4,
-    #5f9ea0
-  ); /* Blue tones */
-  background-size: 400% 400%;
-  animation: gradientAnimation 12s ease infinite;
+  background: linear-gradient(to bottom, #0a3d62, #1e90ff, #4682b4, #5f9ea0);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center top;
   width: 100vw;
   height: 100vh;
   color: #eaeaea;
+  display: flex;
+  flex-direction: column;
 }
 
 .Header {
   display: flex;
   padding: 2rem 0;
+  flex: 0.2;
 }
 
 .Header .Details {
@@ -36,7 +34,31 @@
 }
 
 .ScoreBoard {
-  flex: 0.2;
+  flex: 0.1;
+}
+
+.CardGrid {
+  flex: 0.9;
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 1rem;
+  gap: 15px;
+}
+
+.Card {
+  width: 250px;
+  height: 300px;
+  border: 2px solid #06d6a0; /* Smooth emerald green border */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 15px rgba(0, 0, 0, 0.15); /* Soft shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.Card:hover {
+  transform: translateY(-10px); /* Lift the card on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2), 0 8px 20px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
 }
 
 @media (max-width: 500px) {
@@ -45,17 +67,5 @@
   }
   .Header .Details {
     padding-left: 1rem;
-  }
-}
-
-@keyframes gradientAnimation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
   }
 }
