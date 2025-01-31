@@ -6,6 +6,34 @@
   color: #eaeaea;
 }
 
+.Header {
+  display: flex;
+  padding: 2rem 0;
+}
+
+.Header .Details {
+  flex: 0.8;
+  padding-left: 2rem;
+}
+
 .Header h1 {
   font-family: "Playfair Display", "Press Start 2P", "Cinzel", serif;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+.Header p {
+  font-size: clamp(0.8rem, 2vw, 1.2rem);
+}
+
+.ScoreBoard {
+  flex: 0.2;
+}
+
+@media (max-width: 500px) {
+  .Header {
+    padding: 1rem 0;
+  }
+  .Header .Details {
+    padding-left: 1rem;
+  }
 }
