@@ -6,6 +6,7 @@ export default function Card() {
       {cardList.map((card) => {
         return (
           <div className="Card" key={card}>
+            <img src="" alt="Image" />
             {card}
           </div>
         );
