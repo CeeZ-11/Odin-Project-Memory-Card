@@ -49,13 +49,31 @@ export default function App() {
 
   const shuffleArray = (array) => array.slice().sort(() => Math.random() - 0.5);
 
-  const handleClick = (name) => {
-    cards.map((card) => {
-      if (card.name === name && !card.isClick) {
-        setScore(score + 1);
-        card.isClick = true;
-        setCards(shuffleArray(cards));
+  const handleClick = (id) => {
+    setCards((cards) => {
+      let newScore = score;
+
+      let updatedCards = cards.map((card) => {
+        if (card.id === id) {
+          if (!card.isClick) {
+            newScore += 1;
+            return { ...card, isClick: true };
+          } else {
+            newScore = 0;
+            return { ...card, isClick: false };
+          }
+        }
+        return card;
+      });
+
+      if (newScore === 0) {
+        updatedCards = cards.map((card) => {
+          return { ...card, isClick: false };
+        });
       }
+
+      setScore(newScore);
+      return shuffleArray(updatedCards);
     });
   };
 

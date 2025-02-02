@@ -6,6 +6,7 @@ export default function CardGrid({ cards, handleClick }) {
       {cards.map((card) => (
         <Card
           key={card.id}
+          id={card.id}
           name={card.name}
           image={card.image}
           handleClick={handleClick}
