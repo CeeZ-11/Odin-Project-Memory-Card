@@ -14,6 +14,7 @@ export default function CardGrid({ cards, handleClick, score }) {
             id={card.id}
             name={card.name}
             image={card.image}
+            sound={card.sound}
             handleClick={handleClick}
           />
         ))

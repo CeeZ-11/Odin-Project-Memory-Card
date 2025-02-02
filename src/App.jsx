@@ -3,6 +3,34 @@ import CardGrid from "./components/CardGrid";
 import "./App.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import pikachuSound from "./sounds/pikachu-sound.mp3";
+import charmanderSound from "./sounds/charmander-sound.mp3";
+import squirtleSound from "./sounds/squirtle-sound.mp3";
+import bulbasaurSound from "./sounds/bulbasaur-sound.mp3";
+import eeveeSound from "./sounds/eevee-sound.mp3";
+import jigglypuffSound from "./sounds/jigglypuff-sound.mp3";
+import meowthSound from "./sounds/meowth-sound.mp3";
+import snorlaxSound from "./sounds/snorlax-sound.mp3";
+import gengarSound from "./sounds/gengar-sound.mp3";
+import dragoniteSound from "./sounds/dragonite-sound.mp3";
+import lucarioSound from "./sounds/lucario-sound.mp3";
+import gyaradosSound from "./sounds/gyarados-sound.mp3";
+
+// Define sound URLs for the Pokémon
+const pokemonSounds = {
+  pikachu: pikachuSound,
+  charmander: charmanderSound,
+  squirtle: squirtleSound,
+  bulbasaur: bulbasaurSound,
+  eevee: eeveeSound,
+  jigglypuff: jigglypuffSound,
+  meowth: meowthSound,
+  snorlax: snorlaxSound,
+  gengar: gengarSound,
+  dragonite: dragoniteSound,
+  lucario: lucarioSound,
+  gyarados: gyaradosSound,
+};
 
 export default function App() {
   const [score, setScore] = useState(0);
@@ -45,6 +73,7 @@ export default function App() {
         name: response.data.name,
         image: response.data.sprites.front_default,
         isClick: false,
+        sound: pokemonSounds[response.data.name.toLowerCase()] || "",
       }));
 
       // Update the state with the fetched data
@@ -56,12 +85,16 @@ export default function App() {
 
   const shuffleArray = (array) => array.slice().sort(() => Math.random() - 0.5);
 
-  const handleClick = (id) => {
+  const handleClick = (id, sound) => {
     setCards((cards) => {
       let newScore = score;
 
       let updatedCards = cards.map((card) => {
         if (card.id === id) {
+          if (sound) {
+            const audio = new Audio(sound); // Play the Pokémon sound
+            audio.play();
+          }
           if (!card.isClick) {
             newScore += 1;
             return { ...card, isClick: true };
@@ -83,6 +116,7 @@ export default function App() {
       }
 
       setScore(newScore);
+
       return shuffleArray(updatedCards);
     });
   };
