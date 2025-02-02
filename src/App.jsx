@@ -47,13 +47,14 @@ export default function App() {
     }
   };
 
+  const shuffleArray = (array) => array.slice().sort(() => Math.random() - 0.5);
+
   const handleClick = (name) => {
     cards.map((card) => {
-      if (card.name === name) {
-        if (card.isClick === false) {
-          setScore(score + 1);
-          card.isClick = true;
-        }
+      if (card.name === name && !card.isClick) {
+        setScore(score + 1);
+        card.isClick = true;
+        setCards(shuffleArray(cards));
       }
     });
   };
