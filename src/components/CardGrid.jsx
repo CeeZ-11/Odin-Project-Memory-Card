@@ -2,7 +2,7 @@ import Card from "./Card";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-export default function CardGrid() {
+export default function CardGrid({ handleClick }) {
   const [cards, setCards] = useState([]);
 
   const fetchPokemon = async () => {
@@ -52,7 +52,12 @@ export default function CardGrid() {
   return (
     <div className="CardGrid">
       {cards.map((card) => (
-        <Card key={card.id} name={card.name} image={card.image} />
+        <Card
+          key={card.id}
+          name={card.name}
+          image={card.image}
+          handleClick={handleClick}
+        />
       ))}
     </div>
   );
