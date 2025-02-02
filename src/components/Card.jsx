@@ -1,16 +1,8 @@
-export default function Card() {
-  const cardList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-
+export default function Card({ name, image }) {
   return (
-    <>
-      {cardList.map((card) => {
-        return (
-          <div className="Card" key={card}>
-            <img src="" alt="Image" />
-            {card}
-          </div>
-        );
-      })}
-    </>
+    <div className="Card">
+      <img src={image} alt={name} />
+      <p>{name}</p>
+    </div>
   );
 }
