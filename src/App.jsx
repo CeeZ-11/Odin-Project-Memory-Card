@@ -90,11 +90,7 @@ export default function App() {
   return (
     <div className="App">
       <Header score={score} highestScore={highestScore} />
-      <CardGrid
-        cards={cards}
-        handleClick={handleClick}
-        highestScore={highestScore}
-      />
+      <CardGrid cards={cards} handleClick={handleClick} score={score} />
     </div>
   );
 }

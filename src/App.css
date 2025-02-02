@@ -69,6 +69,15 @@ body {
   border-radius: 8px;
 }
 
+.CardGrid .Win {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 60vh;
+}
+
 @media (max-width: 500px) {
   .Header {
     padding: 1rem 0;

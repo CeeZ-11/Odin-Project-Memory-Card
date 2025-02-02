@@ -1,10 +1,12 @@
 import Card from "./Card";
 
-export default function CardGrid({ cards, handleClick, highestScore }) {
+export default function CardGrid({ cards, handleClick, score }) {
   return (
     <div className="CardGrid">
-      {highestScore >= 12 ? (
-        <h1> Congratulations! You win </h1>
+      {score >= 12 ? (
+        <div className="Win">
+          <h1> Congratulations! You win </h1>
+        </div>
       ) : (
         cards.map((card) => (
           <Card
