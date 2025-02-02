@@ -1,8 +1,8 @@
-export default function Scoreboard({ score }) {
+export default function Scoreboard({ score, highestScore }) {
   return (
     <div className="ScoreBoard">
       <p>Score: {score}</p>
-      <p>Best Score: </p>
+      <p>Best Score: {highestScore}</p>
     </div>
   );
 }

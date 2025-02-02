@@ -1,6 +1,6 @@
 import Scoreboard from "./Scoreboard";
 
-export default function Header({ score }) {
+export default function Header({ score, highestScore }) {
   return (
     <div className="Header">
       <div className="Details">
@@ -10,7 +10,7 @@ export default function Header({ score }) {
           than once!
         </p>
       </div>
-      <Scoreboard score={score} />
+      <Scoreboard score={score} highestScore={highestScore} />
     </div>
   );
 }

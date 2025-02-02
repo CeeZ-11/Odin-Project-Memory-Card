@@ -7,6 +7,13 @@ import { useState, useEffect } from "react";
 export default function App() {
   const [score, setScore] = useState(0);
   const [cards, setCards] = useState([]);
+  const [highestScore, setHighestScore] = useState(0);
+
+  useEffect(() => {
+    fetchPokemon().then((data) => {
+      if (data) setCards(data);
+    });
+  }, []);
 
   const fetchPokemon = async () => {
     try {
@@ -59,6 +66,9 @@ export default function App() {
             newScore += 1;
             return { ...card, isClick: true };
           } else {
+            if (newScore > highestScore) {
+              setHighestScore(newScore);
+            }
             newScore = 0;
             return { ...card, isClick: false };
           }
@@ -77,15 +87,9 @@ export default function App() {
     });
   };
 
-  useEffect(() => {
-    fetchPokemon().then((data) => {
-      if (data) setCards(data);
-    });
-  }, []);
-
   return (
     <div className="App">
-      <Header score={score} />
+      <Header score={score} highestScore={highestScore} />
       <CardGrid cards={cards} handleClick={handleClick} />
     </div>
   );
